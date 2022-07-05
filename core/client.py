@@ -24,7 +24,7 @@ class FdcBot(commands.Bot):
             if name.endswith(".py"):
                 try:
                     await self.load_extension("core.cogs." + name[:-3])
-                except Exception:
+                except Exception as _:
                     traceback.print_exc()
                 else:
                     self.print(f"Loaded {name}")
