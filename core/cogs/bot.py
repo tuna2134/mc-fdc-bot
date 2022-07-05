@@ -1,17 +1,19 @@
 from . import Cog
 
+from discord.ext import commands
+
 
 class Bot_general(Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @Cog.command()
+    @commands.command(description="Ping command")
     async def ping(self, ctx):
-        await ctx.send(
+        await ctx.reply(
             embed=Cog.Embed(title="Pong", description=f"{round(self.bot.latency * 100, 1)}ms")
         )
 
-    @Cog.command()
+    @commands.command()
     async def info(self, ctx):
         pass
 

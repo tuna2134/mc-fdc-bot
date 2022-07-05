@@ -13,3 +13,5 @@ class DataType(TypedDict):
 
 with open("config.yml", "r") as fp:
     DATA: DataType = safe_load(fp)
+
+DATA["version"] = "0.0.1"

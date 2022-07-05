@@ -5,3 +5,4 @@ pynacl
 orjson
 discord-ext-fslash
 jishaku
+yt-dlp

@@ -17,14 +17,21 @@ class FdcBot(commands.Bot):
             print(f"[BOT]: {content}")
 
     async def setup_hook(self) -> None:
-        await self.load_extension("jishaku")
-        for name in listdir("./cogs"):
+        # await self.load_extension("jishaku")
+        for name in listdir("./core/cogs"):
             if name.startswith("_"):
                 continue
             if name.endswith(".py"):
                 try:
-                    await self.load_extension(".cogs." + name[:-3])
+                    await self.load_extension("core.cogs." + name[:-3])
                 except Exception:
                     traceback.print_exc()
                 else:
                     self.print(f"Loaded {name}")
+        await self.tree.sync()
+
+    async def on_ready(self) -> None:
+        print("Bot is ready!")
+
+    async def on_message(self, message):
+        await self.process_commands(message)
